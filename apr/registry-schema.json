@@ -1,0 +1,674 @@
+{
+    "ampath-mapping": {
+        "site_id": "26654",
+        "study_id": "APR1003326",
+        "arvs": {
+            "631": {
+                "desc": "NEVIRAPINE",
+                "medcode": "99.13-PEPFAR - NEVIRAPINE",
+                "manufacturer": []
+            },
+            "633": {
+                "desc": "EFAVIRENZ",
+                "medcode": "99.03-PEPFAR - EFAVIRENZ",
+                "manufacturer": []
+            },
+            "6964": {
+                "desc": "LAMIVUDINE+EFAVIRENZ+TENOFOVIR",
+                "medcode": "99.06-PEPFAR - LAMIVUDINE+EFAVIRENZ+TENOFOVIR",
+                "manufacturer": []
+            },
+            "630": {
+                "desc": "LAMIVUDINE+ZIDOVUDINE",
+                "medcode": "99.08-PEPFAR - LAMIVUDINE+ZIDOVUDINE",
+                "manufacturer": []
+            },
+            "792": {
+                "desc": "LAMIVUDINE+NEVIRAPINE+STAVUDINE",
+                "medcode": "99.07-PEPFAR - LAMIVUDINE+NEVIRAPINE+STAVUDINE",
+                "manufacturer": []
+            },
+            "6467": {
+                "desc": "LAMIVUDINE+NEVIRAPINE+ZIDOVUDINE",
+                "medcode": "99.05-PEPFAR - LAMIVUDINE+NEVIRAPINE+ZIDOVUDINE",
+                "manufacturer": []
+            },
+            "6679": {
+                "desc": "ABACAVIR AND LAMIVUDINE",
+                "medcode": "99.10-PEPFAR - ABACAVIR+LAMIVUDINE",
+                "manufacturer": "TODO"
+            },
+            "628": {
+                "desc": "LAMIVUDINE",
+                "medcode": "99.04-PEPFAR - LAMIVUDINE",
+                "manufacturer": []
+            },
+            "1400": {
+                "desc": "LAMIVUDINE+TENOFOVIR",
+                "medcode": "99.09-PEPFAR - LAMIVUDINE+TENOFOVIR",
+                "manufacturer": []
+            },
+            "794": {
+                "desc": "LOPINAVIR AND RITONAVIR",
+                "medcode": "99.12-PEPFAR - LOPINAVIR+RITONAVIR",
+                "manufacturer": []
+            },
+            "625": {
+                "desc": "STAVUDINE",
+                "medcode": "99.14-PEPFAR - STAVUDINE",
+                "manufacturer": []
+            },
+            "814": {
+                "desc": "ABACAVIR",
+                "medcode": "99.01-PEPFAR - ABACAVIR",
+                "manufacturer": []
+            },
+            "797": {
+                "desc": "ZIDOVUDINE",
+                "medcode": "99.16-PEPFAR - ZIDOVUDINE",
+                "manufacturer": []
+            },
+            "796": {
+                "desc": "DIDANOSINE",
+                "medcode": "99.19-PEPFAR - DIDANOSINE",
+                "manufacturer": "TODO"
+            },
+            "802": {
+                "desc": "TENOFOVIR",
+                "medcode": "99.15-PEPFAR - TENOFOVIR DISOPROXIL FUMARATE",
+                "manufacturer": []
+            },
+            "6965": {
+                "desc": "LAMIVUDINE AND STAVUDINE",
+                "medcode": "99.11-PEPFAR - LAMIVUDINE+STAVUDINE",
+                "manufacturer": []
+            },
+            "635": {
+                "desc": "NELFINAVIR / VIRACEPT",
+                "medcode": "99.24-PEPFAR - NELFINAVIR",
+                "manufacturer": "TODO"
+            },
+            "5424": {
+                "desc": "OTHER ANTIRETROVIRAL DRUG",
+                "medcode": "TODO- OTHER",
+                "manufacturer": []
+            },
+            "1107": {
+                "desc": "NONE",
+                "medcode": "??",
+                "manufacturer": []
+            },
+            "6180": {
+                "desc": "EMTRICITABINE / TENOFOVIR DISOPROXIL, TRUVADA",
+                "medcode": "99.21-PEPFAR - TENOFOVIR DISOPROXIL FUMARATE+EMTRICITABINE",
+                "manufacturer": "TODO"
+            },
+            "749": {
+                "desc": "INDINAVIR, CRIXIVAN",
+                "medcode": "99.18-PEPFAR - INDINAVIR",
+                "manufacturer": "TODO"
+            },
+            "795": {
+                "desc": "RITONAVIR",
+                "medcode": "99.20-PEPFAR - RITONAVIR",
+                "manufacturer": "TODO"
+            },
+            "6160": {
+                "desc": "ATAZANAVIR AND RITONAVIR",
+                "medcode": "99.02-PEPFAR - ATAZANAVIR+RITONAVIR",
+                "manufacturer": []
+            },
+            "6156": {
+                "desc": "RALTEGRAVIR",
+                "medcode": "99.25-PEPFAR - RALTEGRAVIR",
+                "manufacturer": "TODO"
+            },
+            "5811": {
+                "desc": "UNKNOWN ANTIRETROVIRAL DRUG",
+                "medcode": "TODO- OTHER",
+                "manufacturer": []
+            },
+            "6159": {
+                "desc": "ATAZANAVIR",
+                "medcode": "99.26-PEPFAR - ATAZANAVIR",
+                "manufacturer": "TODO"
+            },
+            "6157": {
+                "desc": "DARUNAVIR, PREZISTA",
+                "medcode": "99.22-PEPFAR - DARUNAVIR",
+                "manufacturer": "TODO"
+            },
+            "817": {
+                "desc": "ABACAVIR / LAMIVUDINE / ZIDOVUDINE",
+                "medcode": "99.23-PEPFAR - ABACAVIR+LAMIVUDINE+ZIDOVUDINE",
+                "manufacturer": "TODO"
+            },
+            "791": {
+                "desc": "EMTRICITABINE, EMTRIVA",
+                "medcode": "99.17-PEPFAR - EMTRICITABINE",
+                "manufacturer": "TODO"
+            }
+        }
+    },
+    "faces-mapping": {
+        "site_id": "26655",
+        "study_id": "APR1003326",
+        "arvs": {
+            "6288": {
+                "desc": "Lamivudine / Nevirapine / Tenofovir",
+                "medcode": "99.27-PEPFAR - LAMIVUDINE+NEVIRAPINE+TENOFOVIR",
+                "manufacturer": "TODO"
+            },
+            "6285": {
+                "desc": "LAMIVUDINE+NEVIRAPINE+ZIDOVUDINE",
+                "medcode": "99.05-PEPFAR - LAMIVUDINE+NEVIRAPINE+ZIDOVUDINE",
+                "manufacturer": []
+            },
+            "797": {
+                "desc": "ZIDOVUDINE",
+                "medcode": "99.16-PEPFAR - ZIDOVUDINE",
+                "manufacturer": []
+            },
+            "6289": {
+                "desc": "LAMIVUDINE+EFAVIRENZ+TENOFOVIR",
+                "medcode": "99.06-PEPFAR - LAMIVUDINE+EFAVIRENZ+TENOFOVIR",
+                "manufacturer": []
+            },
+            "6296": {
+                "desc": "Lamivudine, lopinavir/ritonavir, Tenofovir",
+                "medcode": "99.37-PEPFAR - LAMIVUDINE+LOPINAVIR+RITONAVIR+TENOFOVIR",
+                "manufacturer": "TODO"
+            },
+            "6286": {
+                "desc": "Lamivudine / Zidovudine / Efavirenz",
+                "medcode": "99.28-PEPFAR - LAMIVUDINE+ZIDOVUDINE+EFAVIRENZ",
+                "manufacturer": "TODO"
+            },
+            "6284": {
+                "desc": "LAMIVUDINE+NEVIRAPINE+STAVUDINE",
+                "medcode": "99.07-PEPFAR - LAMIVUDINE+NEVIRAPINE+STAVUDINE",
+                "manufacturer": []
+            },
+            "6293": {
+                "desc": "Lamivudine, Zidovudine, Lopinavir/Ritoavir",
+                "medcode": "99.32-PEPFAR - LAMIVUDINE+LOPINAVIR+RITONAVIR+ZIDOVUDINE",
+                "manufacturer": "TODO"
+            },
+            "5424": {
+                "desc": "Other",
+                "medcode": "Other",
+                "manufacturer": []
+            },
+            "625": {
+                "desc": "Stavudine",
+                "medcode": "99.14-PEPFAR - STAVUDINE",
+                "manufacturer": []
+            },
+            "631": {
+                "desc": "Nevirapine",
+                "medcode": "99.13-PEPFAR - NEVIRAPINE",
+                "manufacturer": []
+            },
+            "633": {
+                "desc": "EFAVIRENZ",
+                "medcode": "99.03-PEPFAR - EFAVIRENZ",
+                "manufacturer": []
+            },
+            "794": {
+                "desc": "LOPINAVIR AND RITONAVIR, ALUVIA",
+                "medcode": "99.12-PEPFAR - LOPINAVIR+RITONAVIR",
+                "manufacturer": []
+            },
+            "1747": {
+                "desc": "LOPINAVIR AND RITONAVIR, ALUVIA",
+                "medcode": "99.12-PEPFAR - LOPINAVIR+RITONAVIR",
+                "manufacturer": []
+            },
+            "6287": {
+                "desc": "3TC, d4t, EFV - Lamivudine, Stavudine, Efavirenz",
+                "medcode": "99.29-PEPFAR - LAMIVUDINE+STAVUDINE+EFAVIRENZ",
+                "manufacturer": "TODO"
+            },
+            "6290": {
+                "desc": "3TC, ABC, NVP - Lamivudine, Abacavir, Nevirapine",
+                "medcode": "99.34-PEPFAR - LAMIVUDINE+ABACAVIR+NEVIRAPINE",
+                "manufacturer": "TODO"
+            },
+            "6291": {
+                "desc": "3TC, ABC, EFV - Lamivudine, Abacavir, Efavirenz",
+                "medcode": "99.33-PEPFAR - LAMIVUDINE+ABACAVIR+EFAVIRENZ",
+                "manufacturer": "TODO"
+            },
+            "6297": {
+                "desc": "3TC, ABC, LPV/r - Lamivudine, Abacavir, Lopinavir/ritonavir",
+                "medcode": "99.31-PEPFAR - ABACAVIR+LOPINAVIR+RITONAVIR+LAMIVUDINE",
+                "manufacturer": "TODO"
+            },
+            "6299": {
+                "desc": "ABC, AZT, LPV/r - Abacavir, Zidovudine, Lopinavir/ritonavir",
+                "medcode": "99.30-PEPFAR - ABACAVIR+LOPINAVIR+RITONAVIR+ZIDOVUDINE",
+                "manufacturer": "TODO"
+            },
+            "7402": {
+                "desc": "Truvada (FTC/TDF) - Emtricitabine, Tenofovir",
+                "medcode": "99.21-PEPFAR - TENOFOVIR DISOPROXIL FUMARATE+EMTRICITABINE",
+                "manufacturer": "TODO"
+            },
+            "7403": {
+                "desc": "ATRIPLA (EFV/FTC/TDF) - Efavirenz, Emtricitabine, Tenofovir",
+                "medcode": "99.38-PEPFAR - EFAVIRENZ+TENOFOVIR DISOPROXIL FUMARATE+EMTRICITABINE",
+                "manufacturer": "TODO"
+            },
+            "7500": {
+                "desc": "TDF, 3TC, ATV/r - Tenofovir, Lamivudine, Atazanavir/ritonavir",
+                "medcode": "99.35-PEPFAR - LAMIVUDINE+ATAZANAVIR+RITONAVIR+TENOFAVIR",
+                "manufacturer": "TODO"
+            },
+            "7501": {
+                "desc": "AZT, 3TC, ATV/r - Zidovudine, Lamivudine, Atazanavir/ritonavir",
+                "medcode": "99.36-PEPFAR - LAMIVUDINE+ATAZANAVIR+RITONAVIR+ZIDOVUDINE",
+                "manufacturer": "TODO"
+            }
+        }
+    },
+    "apr-model-mapping": {
+        "101_P3_HCP_OR_SPONSOR": { "type": "literal", "value": "1" },
+        "101_P4_HCP_ID_SPONSOR_ID": "sponsor_formatted_patient_id",
+        "101_P5_COUNTRY": { "type": "literal", "value": "KEN" },
+        "101_P5_STATE": "empty",
+        "101_P8_PT_ENROLLED_IN_ANOTHER_STUDY": { "type": "literal", "value": "0" },
+        "101_P9_PROTOCOL_1": "empty",
+        "101_P11_PROTOCOL_2": "empty",
+        "101_P13_PROTOCOL_3": "empty",
+        "101_P15_PROTOCOL_4": "empty",
+        "101_P10_PROTOCOL_1_OTHER": "empty",
+        "101_P12_PROTOCOL_2_OTHER": "empty",
+        "101_P14_PROTOCOL_3_OTHER": "empty",
+        "101_P16_PROTOCOL_4_OTHER": "empty",
+        "101_P17_TRIAL_FOR_PREGNANT_WOMEN": "empty",
+        "101_P18_DATE_LMP": "entry.lmp",
+        "101_P19_EDD_DATE": "entry.edd",
+        "101_P20_AGE": "entry.age_at_conception",
+        "101_P21_RACE": { "type": "literal", "value": "2" },
+        "101_P22_RACE_OTHER_SPECIFY": "empty",
+
+        "101_P69_CLINICAL_INDICATOR_HIV_INFECTED": { "type": "literal", "value": "1" },
+        "101_P70_CLINICAL_INDICATOR_HIV_NON_INFECTED": "empty",
+        "101_P71_CLINICAL_INDICATOR_PEP": "empty",
+        "101_P72_CLINICAL_INDICATOR_PREP": "empty",
+        "101_P73_CLINICAL_INDICATOR_HEPATITIS_B": "empty",
+        "101_P74_CLINICAL_INDICATOR_HEPATITIS_C": "empty",
+        "101_P75_T_CELL_CATEGORIES": { "type": "literal", "value": "5" },
+        "101_P77_HEP_INDICATOR": { "type": "literal", "value": "D" },
+        "101_P76_HIV_INDICATOR": { "type": "literal", "value": "B" },
+
+        "3_P3_HCP_OR_SPONSOR": { "type": "literal", "value": "1" },
+        "3_P4_HCP_ID_SPONSOR_ID": "sponsor_formatted_patient_id",
+        "3_BLITERAP": "empty",
+        "3_P5_STOP_DATE_LMP_OR_EDD": "empty",
+
+        "4_P3_HCP_OR_SPONSOR": { "type": "literal", "value": "1" },
+        "4_P4_HCP_ID_SPONSOR_ID": "sponsor_formatted_patient_id",
+        "4_P5_PT_ENROLLED_IN_ANOTHER_STUDY": { "type": "literal", "value": "0" },
+        "4_P6_PROTOCOL_NO": "empty",
+        "4_P7_TRAIL_FOR_PREGNANT_WOMEN": "empty",
+
+        "5_P6_BIRTH_DEFECT_NOTED": "entry.birth_defect",
+        "5_P7_OUTCOME": "entry.outcome",
+
+        "5_P8_OUTCOME_DATE": "entry.date_of_outcome",
+        "5_P9_GENDER": "entry.gender",
+        "5_P3_BABY_ID": "baby_id",
+        "5_P4_HCP_or_SPONSOR": { "type": "literal", "value": "1" },
+        "5_P5_HCP_ID_OR_SPONSOR": "sponsor_formatted_patient_id",
+
+        "101_HDR_DOMAIN": { "type": "literal", "value": "SC" },
+        "101_IND_DOMAIN": { "type": "literal", "value": "SC" },
+        "101_MINF_DOMAIN": { "type": "literal", "value": "SC" },
+        "101_SUB_DOMAIN": { "type": "literal", "value": "SC" },
+        "3_ATDP_DOMAIN": { "type": "literal", "value": "SC" },
+        "3_HDR_DOMAIN": { "type": "literal", "value": "SC" },
+        "4_HDR_DOMAIN": { "type": "literal", "value": "SC" },
+        "4_MINF_DOMAIN": { "type": "literal", "value": "SC" },
+        "5_FO_DOMAIN": { "type": "literal", "value": "SC" },
+        "5_HDR_DOMAIN": { "type": "literal", "value": "SC" },
+
+        "101_P23_PRENATAL_TESTS_PERFORMED": { "type": "literal", "value": "0" },
+        "101_P27_DEFECT_NOTED": "empty",
+        "101_P28_SPECIFY_STRUCT_DEFECT": "empty",
+        "101_P25_PRENATAL_DATE": "empty",
+        "101_P26_PRENATAL_AGE": "empty",
+        "101_P24_PRENATAL_TEST": "empty",
+        "101_PRNR_DOMAIN": { "type": "literal", "value": "SC" },
+
+        "101_P27_DEFECT_NOTED_OTH": "empty",
+        "101_P28_SPECIFY_STRUCT_DEFECT_OTH": "empty",
+        "101_P25_PRENATAL_DATE_OTH": "empty",
+        "101_P26_PRENATAL_AGE_OTH": "empty",
+        "101_P24_PRENATAL_TEST_OTH": "empty",
+
+        "11_COM_COM3_DOMAIN_SCIF": { "type": "literal", "value": "SC" },
+        "11_GCS_GCS1_DOMAIN_SCIF": { "type": "literal", "value": "SC" },
+        "11_HDR_HDR2_DOMAIN_SCIF": { "type": "literal", "value": "SC" },
+        "11_IN_IN2_INOR_DOMAIN": { "type": "literal", "value": "SC" },
+        "11_MAT_MAT1_MAEV_DOMAIN": { "type": "literal", "value": "SC" },
+        "11_OE_OE2_OEOR_DOMAIN": { "type": "literal", "value": "SC" },
+        "11_POSTP_POS1_POST_DOMAIN": { "type": "literal", "value": "SC" },
+
+        "11_GCS_GCS1_GCSCAS_SCIF": { "type": "literal", "value": "C" },
+        "11_GCS_GCS1_GCSCUR_SCIF": { "type": "literal", "value": "MP" },
+        "11_GCS_GCS1_GCSDTC_SCIF": { "type": "literal", "value": "<yyyymmdd>" },
+        "11_GCS_GCS1_GCSDTR_SCIF": { "type": "literal", "value": "<yyyymmdd>" },
+        "11_GCS_GCS1_GCSINIT_SCIF": { "type": "literal", "value": "3" },
+        "11_GCS_GCS1_GCSORIG_SCIF": { "type": "literal", "value": "MP" },
+        "11_GCS_GCS1_GCSRDN_SCIF": { "type": "literal", "value": "<yyyymmdd>" },
+        "11_GCS_GCS1_GCSREGT_SCIF": { "type": "literal", "value": "P" },
+        "11_HDR_HDR2_PAS_SCIF": { "type": "literal", "value": "1" }
+    },
+    "oc-schema": {
+        "101_P7_DATE_FIRST_SEEN": ["CRF PAGES", "REGISTRATION_FORM", "HDR", "HDR1", "HDR", "HDR1STD", 101],
+        "101_HDR_DOMAIN": ["CRF PAGES", "REGISTRATION_FORM", "HDR", "HDR1", "HDR", "DOMAIN", 101],
+        "101_P5_COUNTRY": ["CRF PAGES", "REGISTRATION_FORM", "HDR", "HDR1", "HDR", "HDRCTRY", 101],
+        "101_P5_STATE": ["CRF PAGES", "REGISTRATION_FORM", "HDR", "HDR1", "HDR", "HDRST", 101],
+        "101_P3_HCP_OR_SPONSOR": ["CRF PAGES", "REGISTRATION_FORM", "HDR", "HDR1", "HDR", "PAS", 101],
+        "101_P4_HCP_ID_SPONSOR_ID": ["CRF PAGES", "REGISTRATION_FORM", "HDR", "HDR1", "HDR", "PASN", 101],
+
+
+        "101_P73_CLINICAL_INDICATOR_HEPATITIS_B":
+            ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "ARVHEPB", 101],
+        "101_P74_CLINICAL_INDICATOR_HEPATITIS_C":
+            ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "ARVHEPC", 101],
+        "101_P69_CLINICAL_INDICATOR_HIV_INFECTED":
+            ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "ARVHIVI", 101],
+        "101_P70_CLINICAL_INDICATOR_HIV_NON_INFECTED":
+            ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "ARVHIVN", 101],
+        "101_P71_CLINICAL_INDICATOR_PEP": ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "ARVPEP", 101],
+        "101_P72_CLINICAL_INDICATOR_PREP": ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "ARVPREP", 101],
+        "101_P75_T_CELL_CATEGORIES": ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "CD4CAT", 101],
+        "101_P77_HEP_INDICATOR": ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "SEVHEP", 101],
+        "101_IND_DOMAIN": ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "DOMAIN", 101],
+        "101_P76_HIV_INDICATOR": ["CRF PAGES", "REGISTRATION_FORM", "IND", "IND1", "IND", "SEVHIV", 101],
+
+
+        "101_P20_AGE": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "AGECONC", 101],
+        "101_P17_TRIAL_FOR_PREGNANT_WOMEN": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "CONDYN", 101],
+        "101_P19_EDD_DATE": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "EDDDT", 101],
+        "101_P10_PROTOCOL_1_OTHER": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENROTH1", 101],
+        "101_P12_PROTOCOL_2_OTHER": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENROTH2", 101],
+        "101_P14_PROTOCOL_3_OTHER": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENROTH3", 101],
+        "101_P16_PROTOCOL_4_OTHER": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENROTH4", 101],
+        "101_P9_PROTOCOL_1": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENRPROT1", 101],
+        "101_P11_PROTOCOL_2": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENRPROT2", 101],
+        "101_P13_PROTOCOL_3": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENRPROT3", 101],
+        "101_P15_PROTOCOL_4": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENRPROT4", 101],
+        "101_P8_PT_ENROLLED_IN_ANOTHER_STUDY": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "ENRYN", 101],
+        "101_P18_DATE_LMP": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "LMPDT", 101],
+        "101_P21_RACE": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "RACE", 101],
+        "101_P22_RACE_OTHER_SPECIFY": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "RACEOTH", 101],
+        "101_MINF_DOMAIN": ["CRF PAGES", "REGISTRATION_FORM", "MINF", "MINF1", "MINF", "DOMAIN", 101],
+
+        "101_P78_SUBMITTED_BY": ["CRF PAGES", "REGISTRATION_FORM", "SUB", "SUB1", "SUB", "SUBBY", 101],
+        "101_SUB_DOMAIN": ["CRF PAGES", "REGISTRATION_FORM", "SUB", "SUB1", "SUB", "DOMAIN", 101],
+
+        "3_BLITERAP": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "BLITERAP", 3]
+        },
+        "3_P7_COURSE": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "COURSE", 3]
+        },
+        "3_P14_STOP_DATE": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "CRSENDT", 3]
+        },
+        "3_P16_ONGOING": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "CRSONGO", 3]
+        },
+        "3_P13_START_DATE": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "CRSSTDT", 3]
+        },
+        "3_P17_EARLIEST_TRIMESTER": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "EET", 3]
+        },
+        "3_P15_STOP_AGE": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "GESAGEEN", 3]
+        },
+        "3_P13_START_AGE": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "GESAGEST", 3]
+        },
+        "3_P6_MEDCODE": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "MEDCODE", 3]
+        },
+        "3_P10_ROUTE": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "ROUTE", 3]
+        },
+        "3_P11_MED_AT_CONCEPT": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "TMC", 3]
+        },
+        "3_P8_DAILY_DOSE": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "TOTDDOSE", 3]
+        },
+        "3_P9_UNIT": {
+            "repeat": 5,
+            "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "UNIT", 3]
+        },
+        "3_P5_STOP_DATE_LMP_OR_EDD": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDP", "GESCALC", 3],
+        "3_ATDP_DOMAIN": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDP", "DOMAIN", 3],
+        "3_P3_HCP_OR_SPONSOR": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "HDR", "HDR2", "HDR", "PAS", 3],
+        "3_P4_HCP_ID_SPONSOR_ID": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "HDR", "HDR2", "HDR", "PASN_D", 3],
+        "3_HDR_DOMAIN": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "HDR", "HDR2", "HDR", "DOMAIN", 3],
+
+        "4_P3_HCP_OR_SPONSOR": ["CRF PAGES", "FOLLOW-UP_FORM_MATERNAL", "HDR", "HDR2", "HDR", "PAS", 4],
+        "4_P4_HCP_ID_SPONSOR_ID": ["CRF PAGES", "FOLLOW-UP_FORM_MATERNAL", "HDR", "HDR2", "HDR", "PASN_D", 4],
+        "4_HDR_DOMAIN": ["CRF PAGES", "FOLLOW-UP_FORM_MATERNAL", "HDR", "HDR2", "HDR", "DOMAIN", 4],
+        "4_P5_PT_ENROLLED_IN_ANOTHER_STUDY": ["CRF PAGES", "FOLLOW-UP_FORM_MATERNAL", "MINF", "MINF2", "MINF", "ENRYN", 4],
+        "4_P6_PROTOCOL_NO": ["CRF PAGES", "FOLLOW-UP_FORM_MATERNAL", "MINF", "MINF2", "MINF", "ENRPROT1", 4],
+        "4_P7_TRAIL_FOR_PREGNANT_WOMEN": ["CRF PAGES", "FOLLOW-UP_FORM_MATERNAL", "MINF", "MINF2", "MINF", "CONDYN", 4],
+        "4_MINF_DOMAIN": ["CRF PAGES", "FOLLOW-UP_FORM_MATERNAL", "MINF", "MINF2", "MINF", "DOMAIN", 4],
+
+        "5_P14_BIRTH_DEFECT": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "BDR", "BDBIDE", 5]
+        },
+        "5_P15_ATTRIBUTED_TO_ANTIVIRAL": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "BDR", "BDDEFAT", 5]
+        },
+        "5_P16_SPECIFY_OTHER_1": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "BDR", "BDOTHR", 5]
+        },
+        "5_FLFACT": {
+            "repeat": 4,
+            "fields": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FLR", "FLFACT", 5]
+        },
+
+        "5_P6_BIRTH_DEFECT_NOTED": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOBDN", 5],
+        "5_P13_HEAD_CIRCUMFERENCE": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOCIRCUM", 5],
+        "5_FO_DOMAIN": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "DOMAIN", 5],
+        "5_P8_OUTCOME_DATE": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FODOUT", 5],
+        "5_P9_GENDER": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOGEND", 5],
+        "5_P11_GESTATIONAL_AGE": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOGESA", 5],
+        "5_P10_LENGTH": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOLENG", 5],
+        "5_P7_OUTCOME": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOOUT", 5],
+        "5_P12_WEIGHT": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOWEIGH", 5],
+        "5_P3_BABY_ID": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "HDR", "HDR3", "HDR", "HDRBAID", 5],
+        "5_P4_HCP_or_SPONSOR": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "HDR", "HDR3", "HDR", "PAS", 5],
+        "5_P5_HCP_ID_OR_SPONSOR": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "HDR", "HDR3", "HDR", "PASN_D", 5],
+        "5_HDR_DOMAIN": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "HDR", "HDR3", "HDR", "DOMAIN", 5],
+
+
+        "101_P27_DEFECT_NOTED_OTH": {
+            "repeat": 3,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNOTH", "PRNDEF", 101]
+        },
+        "101_P28_SPECIFY_STRUCT_DEFECT_OTH": {
+            "repeat": 3,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNOTH", "PRNDFSP", 101]
+        },
+        "101_P25_PRENATAL_DATE_OTH": {
+            "repeat": 3,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNOTH", "PRNDT", 101]
+        },
+        "101_P26_PRENATAL_AGE_OTH": {
+            "repeat": 3,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNOTH", "PRNGAGE", 101]
+        },
+        "101_P24_PRENATAL_TEST_OTH": {
+            "repeat": 3,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNOTH", "PRNTEST", 101]
+        },
+
+        "101_P23_PRENATAL_TESTS_PERFORMED": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNPERF", "PRENYN", 101],
+
+        "101_PRNR_DOMAIN": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "DOMAIN", 101]
+        },
+
+        "101_P27_DEFECT_NOTED": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "PRNDEF", 101]
+        },
+        "101_P28_SPECIFY_STRUCT_DEFECT": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "PRNDFSP", 101]
+        },
+        "101_P25_PRENATAL_DATE": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "PRNDT", 101]
+        },
+        "101_P26_PRENATAL_AGE": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "PRNGAGE", 101]
+        },
+        "101_P24_PRENATAL_TEST": {
+            "repeat": 6,
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "PRNTEST", 101]
+        },
+
+        "11_COM_COM3_COMADCM_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "COM", "COM3", "COM", "COMADCM", 11],
+        "11_COM_COM3_DOMAIN_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "COM", "COM3", "COM", "DOMAIN", 11],
+        "11_GCS_GCS1_DOMAIN_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "DOMAIN", 11],
+        "11_GCS_GCS1_GCSAER_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSAER", 11],
+        "11_GCS_GCS1_GCSCAS_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSCAS", 11],
+        "11_GCS_GCS1_GCSCUR_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSCUR", 11],
+        "11_GCS_GCS1_GCSDSP1_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP1", 11],
+        "11_GCS_GCS1_GCSDSP10_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP10", 11],
+        "11_GCS_GCS1_GCSDSP11_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP11", 11],
+        "11_GCS_GCS1_GCSDSP12_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP12", 11],
+        "11_GCS_GCS1_GCSDSP13_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP13", 11],
+        "11_GCS_GCS1_GCSDSP14_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP14", 11],
+        "11_GCS_GCS1_GCSDSP15_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP15", 11],
+        "11_GCS_GCS1_GCSDSP16_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP16", 11],
+        "11_GCS_GCS1_GCSDSP17_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP17", 11],
+        "11_GCS_GCS1_GCSDSP18_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP18", 11],
+        "11_GCS_GCS1_GCSDSP19_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP19", 11],
+        "11_GCS_GCS1_GCSDSP2_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP2", 11],
+        "11_GCS_GCS1_GCSDSP20_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP20", 11],
+        "11_GCS_GCS1_GCSDSP21_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP21", 11],
+        "11_GCS_GCS1_GCSDSP22_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP22", 11],
+        "11_GCS_GCS1_GCSDSP23_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP23", 11],
+        "11_GCS_GCS1_GCSDSP24_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP24", 11],
+        "11_GCS_GCS1_GCSDSP25_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP25", 11],
+        "11_GCS_GCS1_GCSDSP3_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP3", 11],
+        "11_GCS_GCS1_GCSDSP4_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP4", 11],
+        "11_GCS_GCS1_GCSDSP5_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP5", 11],
+        "11_GCS_GCS1_GCSDSP6_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP6", 11],
+        "11_GCS_GCS1_GCSDSP7_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP7", 11],
+        "11_GCS_GCS1_GCSDSP8_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP8", 11],
+        "11_GCS_GCS1_GCSDSP9_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP9", 11],
+        "11_GCS_GCS1_GCSDTC_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDTC", 11],
+        "11_GCS_GCS1_GCSDTR_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDTR", 11],
+        "11_GCS_GCS1_GCSDUP_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDUP", 11],
+        "11_GCS_GCS1_GCSHCP_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSHCP", 11],
+        "11_GCS_GCS1_GCSINIT_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSINIT", 11],
+        "11_GCS_GCS1_GCSIRC_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSIRC", 11],
+        "11_GCS_GCS1_GCSLTFU_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSLTFU", 11],
+        "11_GCS_GCS1_GCSORIG_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSORIG", 11],
+        "11_GCS_GCS1_GCSPHO_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSPHO", 11],
+        "11_GCS_GCS1_GCSRDN_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSRDN", 11],
+        "11_GCS_GCS1_GCSREGT_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSREGT", 11],
+        "11_GCS_GCS1_GCSSPON_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSSPON", 11],
+        "11_GCS_GCS1_GCSSPY_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSSPY", 11],
+        "11_GCS_GCS1_GCSUDT_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSUDT", 11],
+        "11_HDR_HDR2_DOMAIN_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "HDR", "HDR2", "HDR", "DOMAIN", 11],
+        "11_HDR_HDR2_PAS_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "HDR", "HDR2", "HDR", "PAS", 11],
+        "11_HDR_HDR2_PASN_D_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "HDR", "HDR2", "HDR", "PASN_D", 11],
+
+        "11_IN_IN2_INOR_DOMAIN": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "DOMAIN", 11]
+        },
+        "11_IN_IN2_INOR_INCOND": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "INCOND", 11]
+        },
+        "11_IN_IN2_INOR_INFST": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "INFST", 11]
+        },
+        "11_IN_IN2_INOR_INPRIO": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "INPRIO", 11]
+        },
+        "11_IN_IN2_INOR_INSCN": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "INSCN", 11]
+        },
+        "11_IN_IN2_INOR_INTRD": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "INTRD", 11]
+        },
+
+        "11_MAT_MAT1_MAEV_DOMAIN": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "DOMAIN", 11],
+        "11_MAT_MAT1_MAEV_MATEVEN": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "MATEVEN", 11],
+
+        "11_OE_OE2_OEOR_DOMAIN": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "DOMAIN", 11]
+        },
+        "11_OE_OE2_OEOR_OEFST": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "OEFST", 11]
+        },
+        "11_OE_OE2_OEOR_OEMED": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "OEMED", 11]
+        },
+        "11_OE_OE2_OEOR_OEPRIO": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "OEPRIO", 11]
+        },
+        "11_OE_OE2_OEOR_OESCN": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "OESCN", 11]
+        },
+        "11_OE_OE2_OEOR_OETRD": {
+            "repeat": 6,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "OETRD", 11]
+        },
+        "11_POSTP_POS1_POST_BID": {
+            "repeat": 4,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "BID", 11]
+        },
+        "11_POSTP_POS1_POST_DOMAIN": {
+            "repeat": 4,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "DOMAIN", 11]
+        },
+        "11_POSTP_POS1_POST_POSTP": {
+            "repeat": 4,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "POSTP", 11]
+        }
+    }
+}
