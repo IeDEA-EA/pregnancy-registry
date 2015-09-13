@@ -12,16 +12,17 @@ APR_DB = 'apr_db'
 
 logger = logging.getLogger(__name__)
 
-def full_monthly_cohort_generation(month, year, apr_starting_id):
+def full_monthly_cohort_generation(month=1, year=2014, apr_starting_id=None):
     print "Starting %s %s %s" % (month, year, apr_starting_id)
     forms378encs = get378forms(month, year, apr_starting_id, True)
-    #print forms378encs.count()
 
-def serialize_entries():
+
+def serialize_entries(year, month, filename):
     entries = RegistryEntry.objects.using(APR_DB).filter(
-             voided = 0, site=RegistryEntry.SITE_AMPATH)
-    #entry = RegistryEntry.objects.get(pk=3224)
-    print serialize.encode_entry([i for i in entries], filename="test-endates-and-ongoing-and-supplforms-2015-08-07.txt")
+             voided = 0, site=RegistryEntry.SITE_AMPATH,
+             cohort_date__year = year,
+             cohort_date__month = month)
+    serialize.encode_entry([i for i in entries], filename=filename)
 
 
 def get378forms(month=None, year=2014, apr_starting_id=0, save_entries=False):

@@ -128,6 +128,9 @@ class RegistryEntry(TimestampedModel):
     #   Maybe site and child_id should be unique...
     #    unique_together = (("sit"))
 
+    @classmethod
+    def get_max_apr_id(cls):
+        return cls.objects.aggregate(models.Max('apr_id'))['apr_id__max']
 
 class ArvTherapy(TimestampedModel):
     registry_entry = models.ForeignKey(RegistryEntry)
