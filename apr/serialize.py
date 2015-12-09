@@ -71,12 +71,6 @@ class RegistryEncoder(object):
             "fields": ["CRF PAGES", "ANTIVIRAL_THERAPY_DURING_PREGN", "ATDP", "ATDP1", "ATDPR", "BLITERAP", 3]
         },
         """
-
-        # arv_page_fields = ["3_BLITERAP", "3_P7_COURSE", "3_P14_STOP_DATE", "3_P16_ONGOING", "3_P13_START_DATE",
-        #     "3_P17_EARLIEST_TRIMESTER", "3_P15_STOP_AGE", "3_P13_START_AGE", "3_P5_STOP_DATE_LMP_OR_EDD", 
-        #     "3_ATDP_DOMAIN", "3_P6_MEDCODE", "3_P10_ROUTE", "3_P11_MED_AT_CONCEPT", "3_P8_DAILY_DOSE",
-        #     "3_P9_UNIT", "3_P3_HCP_OR_SPONSOR", ]
-
         for field_name, field in self.oc.iteritems():
             if field_name.startswith("3_"):
                 continue
@@ -86,16 +80,18 @@ class RegistryEncoder(object):
                             site_mapping['site_id'], site_mapping['study_id'],
                             value=value))
             else:
-                #TODO Values for repeating fields
-                #arvs = entry.arvtherapy_set.all()
                 if field_name.startswith("3_"):   # in ('3_P7_COURSE', '3_P13_START_DATE', '3_P6_MEDCODE'):
                     # skip and we'll do the drugs separately
                     continue
                 else:
                     for i in range(1, field['repeat']+1):
+                        if field.has_key('fill') and field['fill'] == 'repeat_value':
+                            value = i
+                        else:
+                            value = ''
                         lines.append(self._build_line(field['fields'], entry.apr_id,
                                 site_mapping['site_id'], site_mapping['study_id'],
-                                repeat=i))
+                                repeat=i, value=value))
         # Do the Drugs
         all_arvs = entry.arvtherapy_set.all()
         arvs = all_arvs

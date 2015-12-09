@@ -492,6 +492,11 @@
             "repeat": 4,
             "fields": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FLR", "FLFACT", 5]
         },
+        "5_BDR_SPID": {
+            "fill": "repeat_value",
+            "repeat": 6,
+            "fields": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "BDR", "SPID", 5]
+        },
 
         "5_P6_BIRTH_DEFECT_NOTED": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOBDN", 5],
         "5_P13_HEAD_CIRCUMFERENCE": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "FO", "FO1", "FO", "FOCIRCUM", 5],
@@ -506,7 +511,6 @@
         "5_P4_HCP_or_SPONSOR": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "HDR", "HDR3", "HDR", "PAS", 5],
         "5_P5_HCP_ID_OR_SPONSOR": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "HDR", "HDR3", "HDR", "PASN_D", 5],
         "5_HDR_DOMAIN": ["CRF PAGES", "FOLLOW-UP_FORM_BABY", "HDR", "HDR3", "HDR", "DOMAIN", 5],
-
 
         "101_P27_DEFECT_NOTED_OTH": {
             "repeat": 3,
@@ -556,6 +560,16 @@
             "repeat": 6,
             "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "PRNTEST", 101]
         },
+        "101_PRN_PRN1_PRNR_SPID": {
+            "repeat": 6,
+            "fill": "repeat_value",
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "SPID", 101]
+        },
+        "101_PRN_PRN1_PRNOTH_SPID": {
+            "repeat": 3,
+            "fill": "repeat_value",
+            "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNOTH", "SPID", 101]
+        },
 
         "11_COM_COM3_COMADCM_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "COM", "COM3", "COM", "COMADCM", 11],
         "11_COM_COM3_DOMAIN_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "COM", "COM3", "COM", "DOMAIN", 11],
@@ -581,6 +595,8 @@
         "11_GCS_GCS1_GCSDSP23_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP23", 11],
         "11_GCS_GCS1_GCSDSP24_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP24", 11],
         "11_GCS_GCS1_GCSDSP25_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP25", 11],
+        "11_GCS_GCS1_GCSDSP26_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP26", 11],
+        "11_GCS_GCS1_GCSDSP27_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP27", 11],
         "11_GCS_GCS1_GCSDSP3_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP3", 11],
         "11_GCS_GCS1_GCSDSP4_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP4", 11],
         "11_GCS_GCS1_GCSDSP5_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "GCS", "GCS1", "GCS", "GCSDSP5", 11],
@@ -605,6 +621,10 @@
         "11_HDR_HDR2_DOMAIN_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "HDR", "HDR2", "HDR", "DOMAIN", 11],
         "11_HDR_HDR2_PAS_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "HDR", "HDR2", "HDR", "PAS", 11],
         "11_HDR_HDR2_PASN_D_SCIF": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "HDR", "HDR2", "HDR", "PASN_D", 11],
+        "11_COM_COM3_COM_ADC1": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "COM", "COM3", "COM", "ADC1", 11],
+        "11_COM_COM3_COM_ADC2": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "COM", "COM3", "COM", "ADC2", 11],
+        "11_COM_COM3_COM_ADC3": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "COM", "COM3", "COM", "ADC3", 11],
+        "11_COM_COM3_COM_ADC4": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "COM", "COM3", "COM", "ADC4", 11],
 
         "11_IN_IN2_INOR_DOMAIN": {
             "repeat": 6,
@@ -630,8 +650,17 @@
             "repeat": 6,
             "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "INTRD", 11]
         },
+        "11_IN_IN2_INOR_SPID": {
+            "repeat": 6,
+            "fill": "repeat_value",
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "SPID", 11]
+        },
 
         "11_MAT_MAT1_MAEV_DOMAIN": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "DOMAIN", 11],
+        "11_MAT_MAT1_MAEV_MAEV1": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV1", "DOMAIN", 11],
+        "11_MAT_MAT1_MAEV_MAEV2": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV2", "DOMAIN", 11],
+        "11_MAT_MAT1_MAEV_MAEV3": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV3", "DOMAIN", 11],
+        "11_MAT_MAT1_MAEV_MAEV4": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV4", "DOMAIN", 11],
         "11_MAT_MAT1_MAEV_MATEVEN": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "MATEVEN", 11],
 
         "11_OE_OE2_OEOR_DOMAIN": {
@@ -658,6 +687,11 @@
             "repeat": 6,
             "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "OETRD", 11]
         },
+        "11_OE_OE2_OEOR_SPID": {
+            "repeat": 6,
+            "fill": "repeat_value",
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "SPID", 11]
+        },
         "11_POSTP_POS1_POST_BID": {
             "repeat": 4,
             "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "BID", 11]
@@ -666,9 +700,30 @@
             "repeat": 4,
             "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "DOMAIN", 11]
         },
+        "11_POSTP_POS1_POST_POPR1": {
+            "repeat": 4,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "POPR1", 11]
+        },
+        "11_POSTP_POS1_POST_POPR2": {
+            "repeat": 4,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "POPR2", 11]
+        },
+        "11_POSTP_POS1_POST_POPR3": {
+            "repeat": 4,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "POPR3", 11]
+        },
+        "11_POSTP_POS1_POST_POPR4": {
+            "repeat": 4,
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "POPR4", 11]
+        },
         "11_POSTP_POS1_POST_POSTP": {
             "repeat": 4,
             "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "POSTP", 11]
+        },
+        "11_POSTP_POS1_POST_SPID": {
+            "repeat": 4,
+            "fill": "repeat_value",
+            "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "SPID", 11]
         }
     }
 }
