@@ -352,6 +352,10 @@
         "11_HDR_HDR2_DOMAIN_SCIF": { "type": "literal", "value": "SC" },
         "11_IN_IN2_INOR_DOMAIN": { "type": "literal", "value": "SC" },
         "11_MAT_MAT1_MAEV_DOMAIN": { "type": "literal", "value": "SC" },
+        "11_MAT_MAT1_MAEV_MAEV1": { "type": "literal", "value": "SC" },
+        "11_MAT_MAT1_MAEV_MAEV2": { "type": "literal", "value": "SC" },
+        "11_MAT_MAT1_MAEV_MAEV3": { "type": "literal", "value": "SC" },
+        "11_MAT_MAT1_MAEV_MAEV4": { "type": "literal", "value": "SC" },
         "11_OE_OE2_OEOR_DOMAIN": { "type": "literal", "value": "SC" },
         "11_POSTP_POS1_POST_DOMAIN": { "type": "literal", "value": "SC" },
 
@@ -537,6 +541,7 @@
 
         "101_PRNR_DOMAIN": {
             "repeat": 6,
+            "fill": "SC",
             "fields": ["CRF PAGES", "REGISTRATION_FORM", "PRN", "PRN1", "PRNR", "DOMAIN", 101]
         },
 
@@ -628,6 +633,7 @@
 
         "11_IN_IN2_INOR_DOMAIN": {
             "repeat": 6,
+            "fill": "SC",
             "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "IN", "IN2", "INOR", "DOMAIN", 11]
         },
         "11_IN_IN2_INOR_INCOND": {
@@ -665,6 +671,7 @@
 
         "11_OE_OE2_OEOR_DOMAIN": {
             "repeat": 6,
+            "fill": "SC",
             "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "OE", "OE2", "OEOR", "DOMAIN", 11]
         },
         "11_OE_OE2_OEOR_OEFST": {
@@ -698,6 +705,7 @@
         },
         "11_POSTP_POS1_POST_DOMAIN": {
             "repeat": 4,
+            "fill": "SC",
             "fields": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "POSTP", "POS1", "POST", "DOMAIN", 11]
         },
         "11_POSTP_POS1_POST_POPR1": {

@@ -87,6 +87,8 @@ class RegistryEncoder(object):
                     for i in range(1, field['repeat']+1):
                         if field.has_key('fill') and field['fill'] == 'repeat_value':
                             value = i
+                        elif field.has_key('fill'):
+                            value = field['fill']
                         else:
                             value = ''
                         lines.append(self._build_line(field['fields'], entry.apr_id,
