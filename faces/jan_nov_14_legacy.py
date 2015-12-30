@@ -5,7 +5,7 @@ import datetime
 import json
 from openmrs.models import Encounter, Relationship, Person, Patient, ConceptName, Obs
 from apr.models import RegistryEntry, EncObs, ArvTherapy
-from apr import utils as emrutils
+from emr import utils as emrutils
 
 FACES_OPENMRS_DB = 'faces_openmrs_db'
 APR_DB = 'apr_db'
@@ -333,4 +333,23 @@ def get_mom(child_id):
                 mom = rel.person_a.person_id
         except Person.DoesNotExist:
             pass
+        #print "%s %s %s %s" % (rel.relationship.description, rel.person_a.person_id,
+        #                        rel.person_a.birthdate, rel.person_a.gender)
     return mom
+
+
+def get_hei_encounters():
+    """
+    Used to populate the initial set of registry entries. At the moment looking
+    at everyone after 2014-01-01, but should add more granular entries once
+    we begin doing this on a rolling basis.
+
+
+    """
+    cohort = Encounter.objects.using(FACES_OPENMRS_DB).raw('''select * from encounter where
+encounter_datetime >= "2014-01-01" and
+location_id in (2,57,4,6,5,7,13,16,28) and
+voided = 0 and
+encounter_type = 26;
+''')
+    return [c for c in cohort]

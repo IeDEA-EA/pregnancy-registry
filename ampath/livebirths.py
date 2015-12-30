@@ -1,8 +1,10 @@
 import datetime
 import json
 import logging
-from openmrs.models import Encounter, Relationship, Person, Patient, ConceptName, Obs
-from openmrs.models import Concept, ConceptAnswer, ConceptClass, ConceptComplex, ConceptDescription, ConceptMapType, ConceptName, ConceptNameTag, ConceptNameTagMap, ConceptNumeric, ConceptSet
+from openmrs.models import Encounter, Relationship, Person, Patient, \
+    ConceptName, Obs, Concept, ConceptAnswer, ConceptClass, ConceptComplex, \
+    ConceptDescription, ConceptMapType, ConceptName, ConceptNameTag, \
+    ConceptNameTagMap, ConceptNumeric, ConceptSet
 from apr.models import RegistryEntry, ArvTherapy
 from apr.utils import calculate_age
 from apr import serialize
@@ -11,6 +13,10 @@ AMRS_DB = 'amrs_db'
 APR_DB = 'apr_db'
 
 logger = logging.getLogger(__name__)
+
+ampath_concepts = {
+
+}
 
 def full_monthly_cohort_generation(month=1, year=2014, apr_starting_id=None):
     print "Starting %s %s %s" % (month, year, apr_starting_id)
@@ -21,7 +27,7 @@ def serialize_entries(year, month, filename):
     entries = RegistryEntry.objects.using(APR_DB).filter(
              voided = 0, site=RegistryEntry.SITE_AMPATH,
              cohort_date__year = year,
-             cohort_date__month = month)
+             cohort_date__month = month).exclude(apr_id__isnull=True)
     serialize.encode_entry([i for i in entries], filename=filename)
 
 
@@ -39,6 +45,11 @@ def get378forms(month=None, year=2014, apr_starting_id=0, save_entries=False):
     logger.info("Number of 378 forms: %s" % (form378encs.count(),))
     for f378 in form378encs:
         logger.info("Starting 378 encounter: %s" % (f378.encounter_id,))
+        # If we've already done this specific encounter we should skip it and 
+        # move on.
+        if RegistryEntry.objects.filter(child_initial_enc_id=f378.encounter_id).count() > 0:
+            logger.info("This encounter id was already processed, skipping and moving on.")
+            continue
         entry = RegistryEntry()
         #  1. Encounter ID
         entry.child_initial_enc_id = f378.encounter_id
@@ -71,6 +82,14 @@ def get378forms(month=None, year=2014, apr_starting_id=0, save_entries=False):
 
         init_obs = f378.obs_set
         # Birth Defect Noted
+        """
+        Field: Birth Defect 
+        If concept 6246 or 6245 is used, we use that checkbox value.
+        If the birth defect checkbox is left blank, then we look to see if any
+        of the following concepts are recorded, and if they are we record those
+        birth defects:
+            8320, 8321, 8322, 8323, 8324, 8325, 8326, 8327, 8328
+        aprfield"""
         if init_obs.filter(concept_id=6246, value_coded=6242).count() > 0:
             entry.birth_defect = RegistryEntry.DEFECT_NO
         elif init_obs.filter(concept_id=6245, value_coded=6242).count() > 0:

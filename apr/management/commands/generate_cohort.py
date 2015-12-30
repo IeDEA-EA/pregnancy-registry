@@ -13,7 +13,7 @@ class Command(BaseCommand):
         if len(args) > 2:
             apr_id_start = args[2]
         else:
-            apr_id_start = RegistryEntry.get_max_apr_id()
+            apr_id_start = RegistryEntry.get_max_apr_id()+1
 
         from ampath import livebirths
         for month in months:

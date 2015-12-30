@@ -352,10 +352,6 @@
         "11_HDR_HDR2_DOMAIN_SCIF": { "type": "literal", "value": "SC" },
         "11_IN_IN2_INOR_DOMAIN": { "type": "literal", "value": "SC" },
         "11_MAT_MAT1_MAEV_DOMAIN": { "type": "literal", "value": "SC" },
-        "11_MAT_MAT1_MAEV_MAEV1": { "type": "literal", "value": "SC" },
-        "11_MAT_MAT1_MAEV_MAEV2": { "type": "literal", "value": "SC" },
-        "11_MAT_MAT1_MAEV_MAEV3": { "type": "literal", "value": "SC" },
-        "11_MAT_MAT1_MAEV_MAEV4": { "type": "literal", "value": "SC" },
         "11_OE_OE2_OEOR_DOMAIN": { "type": "literal", "value": "SC" },
         "11_POSTP_POS1_POST_DOMAIN": { "type": "literal", "value": "SC" },
 
@@ -663,10 +659,10 @@
         },
 
         "11_MAT_MAT1_MAEV_DOMAIN": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "DOMAIN", 11],
-        "11_MAT_MAT1_MAEV_MAEV1": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV1", "DOMAIN", 11],
-        "11_MAT_MAT1_MAEV_MAEV2": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV2", "DOMAIN", 11],
-        "11_MAT_MAT1_MAEV_MAEV3": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV3", "DOMAIN", 11],
-        "11_MAT_MAT1_MAEV_MAEV4": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV4", "DOMAIN", 11],
+        "11_MAT_MAT1_MAEV_MAEV1": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "MAEV1", 11],
+        "11_MAT_MAT1_MAEV_MAEV2": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "MAEV2", 11],
+        "11_MAT_MAT1_MAEV_MAEV3": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "MAEV3", 11],
+        "11_MAT_MAT1_MAEV_MAEV4": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "MAEV4", 11],
         "11_MAT_MAT1_MAEV_MATEVEN": ["SCIF", "SUPPLEMENTAL_CASE_FORM", "MAT", "MAT1", "MAEV", "MATEVEN", 11],
 
         "11_OE_OE2_OEOR_DOMAIN": {

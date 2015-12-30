@@ -97,30 +97,6 @@ class RegistryEntry(TimestampedModel):
     )
     voided_reason = models.CharField(max_length=255, choices=CHOICES_VOIDED_REASON)
 
-    # So we can have multiple voided reasons
-    voided_duplicate = models.BooleanField(default=False)
-    voided_too_old_at_paeds_encounter = models.BooleanField(default=False)
-    voided_mother_not_linked = models.BooleanField(default=False)
-    voided_no_arv_history = models.BooleanField(default=False)
-
-    # Book Keeping Below
-    # Checks for live outcome
-    #check_initial_paeds_lookup = models.BooleanField(default=False)
-    #check_mother_linked = models.BooleanField(default=False)
-    #check_for_defects = models.BooleanField(default=False)
-    #check_added_child_obs = models.BooleanField(default=False)
-
-    # Checks for stillbirth
-    #check_initial_stillbirth_enc = models.BooleanField(default=False)
-    #check_fetal_loss_issues = models.BooleanField(default=False)
-
-    # Checks for either case
-    #check_calc_age_first_seen = models.BooleanField(default=False)
-    #check_history_length_moms_obs = models.BooleanField(default=False)
-    #check_lmp_edd = models.BooleanField(default=False)
-    #check_generate_moms_arvs = models.BooleanField(default=False)
-    #check_added_moms_obs = models.BooleanField(default=False)
-
     status = models.CharField(max_length=100)
     # One-to-many notes_set
 
@@ -156,59 +132,61 @@ class FetalLoss(TimestampedModel):
 
 
 class EncObs(models.Model):
-    patient_id = models.IntegerField(null=True, blank=True)
-    # Only one of these should be used ideally
-    mother_entry = models.ForeignKey(RegistryEntry, related_name="motherobs", null=True, blank=True)
-    child_entry = models.ForeignKey(RegistryEntry, related_name="childobs", null=True, blank=True)
+    pass
 
-    # Encounter fields
-    encounter_id = models.IntegerField(null=True, blank=True)
-    encounter_type = models.IntegerField(null=True, blank=True)
-    location_id = models.IntegerField(null=True, blank=True)
-    form_id = models.IntegerField(null=True, blank=True)
-    encounter_datetime = models.DateTimeField()
-    voided = models.IntegerField()
-
-    # Obs Fields
-    obs_id = models.IntegerField()
-    concept_id = models.IntegerField(null=True, blank=True)
-    order = models.IntegerField(null=True, blank=True)
-    obs_datetime = models.DateTimeField()
-    #location = models.IntegerField(null=True, blank=True)
-    obs_group_id  = models.IntegerField(null=True, blank=True)
-    value_group_id = models.IntegerField(null=True, blank=True)
-    value_boolean = models.IntegerField(null=True, blank=True)
-    value_coded = models.IntegerField(blank=True, null=True)
-    value_coded_name_id = models.IntegerField(blank=True, null=True)
-    value_drug = models.IntegerField(blank=True, null=True)
-    value_datetime = models.DateTimeField(null=True, blank=True)
-    value_numeric = models.FloatField(null=True, blank=True)
-    value_modifier = models.CharField(max_length=6, blank=True, null=True)
-    value_text = models.TextField(blank=True, null=True)
-    comments = models.CharField(max_length=765, blank=True, null=True)
-    date_created = models.DateTimeField(blank=True, null=True)
-    obs_voided = models.IntegerField()
-    value_complex = models.CharField(max_length=765, blank=True, null=True)
-
-    # For readability
-    concept_name = models.CharField(max_length=255, blank=True, null=True)
-
-    @property
-    def value(self):
-        if self.value_numeric:
-            return self.value_numeric
-        elif self.value_datetime:
-            return self.value_datetime.date()
-        elif self.value_boolean:
-            return self.value_boolean
-        elif self.value_coded:
-            return self.value_coded.concept_id
-        elif self.value_text:
-            return self.value_text
-        else:
-            return None
-            raise NotImplementedError("ObsId: " + str(self.obs_id) + " " \
-                    + str(self.concept_id))
+#     patient_id = models.IntegerField(null=True, blank=True)
+#     # Only one of these should be used ideally
+#     mother_entry = models.ForeignKey(RegistryEntry, related_name="motherobs", null=True, blank=True)
+#     child_entry = models.ForeignKey(RegistryEntry, related_name="childobs", null=True, blank=True)
+# 
+#     # Encounter fields
+#     encounter_id = models.IntegerField(null=True, blank=True)
+#     encounter_type = models.IntegerField(null=True, blank=True)
+#     location_id = models.IntegerField(null=True, blank=True)
+#     form_id = models.IntegerField(null=True, blank=True)
+#     encounter_datetime = models.DateTimeField()
+#     voided = models.IntegerField()
+# 
+#     # Obs Fields
+#     obs_id = models.IntegerField()
+#     concept_id = models.IntegerField(null=True, blank=True)
+#     order = models.IntegerField(null=True, blank=True)
+#     obs_datetime = models.DateTimeField()
+#     #location = models.IntegerField(null=True, blank=True)
+#     obs_group_id  = models.IntegerField(null=True, blank=True)
+#     value_group_id = models.IntegerField(null=True, blank=True)
+#     value_boolean = models.IntegerField(null=True, blank=True)
+#     value_coded = models.IntegerField(blank=True, null=True)
+#     value_coded_name_id = models.IntegerField(blank=True, null=True)
+#     value_drug = models.IntegerField(blank=True, null=True)
+#     value_datetime = models.DateTimeField(null=True, blank=True)
+#     value_numeric = models.FloatField(null=True, blank=True)
+#     value_modifier = models.CharField(max_length=6, blank=True, null=True)
+#     value_text = models.TextField(blank=True, null=True)
+#     comments = models.CharField(max_length=765, blank=True, null=True)
+#     date_created = models.DateTimeField(blank=True, null=True)
+#     obs_voided = models.IntegerField()
+#     value_complex = models.CharField(max_length=765, blank=True, null=True)
+# 
+#     # For readability
+#     concept_name = models.CharField(max_length=255, blank=True, null=True)
+# 
+#     @property
+#     def value(self):
+#         if self.value_numeric:
+#             return self.value_numeric
+#         elif self.value_datetime:
+#             return self.value_datetime.date()
+#         elif self.value_boolean:
+#             return self.value_boolean
+#         elif self.value_coded:
+#             return self.value_coded.concept_id
+#         elif self.value_text:
+#             return self.value_text
+#         else:
+#             return None
+#             raise NotImplementedError("ObsId: " + str(self.obs_id) + " " \
+#                     + str(self.concept_id))
 
 
 class Notes(TimestampedModel):
