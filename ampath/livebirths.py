@@ -5,12 +5,12 @@ from openmrs.models import Encounter, Relationship, Person, Patient, \
     ConceptName, Obs, Concept, ConceptAnswer, ConceptClass, ConceptComplex, \
     ConceptDescription, ConceptMapType, ConceptName, ConceptNameTag, \
     ConceptNameTagMap, ConceptNumeric, ConceptSet
-from apr.models import RegistryEntry, ArvTherapy
+from apr.models import RegistryEntry, ArvTherapy, EntryLog
 from apr.utils import calculate_age
 from apr import serialize
 
 AMRS_DB = 'amrs_db'
-APR_DB = 'apr_db'
+APR_DB = 'default'
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +18,7 @@ ampath_concepts = {
 
 }
 
-def full_monthly_cohort_generation(month=1, year=2014, apr_starting_id=None):
+def full_monthly_cohort_generation(month=1, year=2014, apr_starting_id=None, save=True):
     print "Starting %s %s %s" % (month, year, apr_starting_id)
     forms378encs = get378forms(month, year, apr_starting_id, True)
 
@@ -30,11 +30,129 @@ def serialize_entries(year, month, filename):
              cohort_date__month = month).exclude(apr_id__isnull=True)
     serialize.encode_entry([i for i in entries], filename=filename)
 
+def runSingle378Encounter(encounter_id, apr_id, save_entries=False):
+    f378 = Encounter.objects.using(AMRS_DB).get(pk=encounter_id)
+    return run378form(f378, apr_id, save_entries)
+
+def log_data(entry, message, field_key=None, concept_id=None):
+    print message
+    entry_log = EntryLog(registry_entry=entry, message=message, 
+        field_key=field_key, concept_id=concept_id)
+    entry_log.save()
+
+def run378form(f378, cur_apr_id, save_entries=False):
+    logger.info("Starting 378 encounter: %s" % (f378.encounter_id,))
+    # If we've already done this specific encounter we should skip it and 
+    # move on.
+    entry = RegistryEntry()
+    if RegistryEntry.objects.filter(child_initial_enc_id=f378.encounter_id).count() > 0:
+        logger.info("This encounter id was already processed, skipping and moving on.")
+        return entry
+    #  1. Encounter ID
+    entry.child_initial_enc_id = f378.encounter_id
+    #  2. Age in days since encounter
+    entry.age_first_seen = age_in_days_at_encounter(f378)
+    #  3. Child Patient ID
+    entry.child_id = f378.patient_id
+
+    # Has this child been used previously, if so void the encounter.
+    duplicate_entries = RegistryEntry.objects.filter(
+        site=RegistryEntry.SITE_AMPATH, child_id=entry.child_id)
+    if duplicate_entries.count() > 0:
+        entry.voided = True
+        entry.voided_reason = entry.VOIDED_DUPLICATE_CHILD_ENTRY
+        entry.voided_duplicate = True
+
+    child_patient = f378.patient
+    #  4. Mom Patient ID
+    entry.mother_id = get_linked_mother(f378)
+    #  5. Length of Mom's ARV History
+    entry.length_of_moms_arv_history = previous_encounters_in_days(
+        entry.mother_id, f378.encounter_datetime.date())
+
+    entry.site = RegistryEntry.SITE_AMPATH
+    entry.cohort_date = f378.encounter_datetime.date()
+    entry.outcome = entry.OUTCOME_LIVE
+    entry.date_of_outcome = child_patient.patient.birthdate
+    entry.age_first_seen = (entry.cohort_date - entry.date_of_outcome).days
+    entry.gender = child_patient.patient.gender
+
+    init_obs = f378.obs_set
+    # Birth Defect Noted
+    """
+    Field: Birth Defect 
+    If concept 6246 or 6245 is used, we use that checkbox value.
+    If the birth defect checkbox is left blank, then we look to see if any
+    of the following concepts are recorded, and if they are we record those
+    birth defects:
+        8320, 8321, 8322, 8323, 8324, 8325, 8326, 8327, 8328
+    aprfield"""
+    if init_obs.filter(concept_id=6246, value_coded=6242).count() > 0:
+        entry.birth_defect = RegistryEntry.DEFECT_NO
+    elif init_obs.filter(concept_id=6245, value_coded=6242).count() > 0:
+        entry.birth_defect = RegistryEntry.DEFECT_YES
+    else:
+        congab_concepts = [8320, 8321, 8322, 8323, 8324, 8325, 8326, 8327, 8328]
+        congab_obs = init_obs.filter(concept_id__in = congab_concepts, voided=0)
+        if congab_obs.count() > 0:
+            entry.birth_defect = RegistryEntry.DEFECT_YES
+        else:
+            entry.birth_defect = RegistryEntry.DEFECT_UNKNOWN
+    # Birth Weight
+    weight_obs = init_obs.filter(concept_id=5916)
+    if weight_obs.count() > 0:
+        entry.birth_weight = weight_obs[0].value_numeric * 1000
+
+    if save_entries:
+        entry.save(using=APR_DB)
+
+    if entry.mother_id:
+        entry.check_mother_linked = True
+        mother = Patient.objects.using(AMRS_DB).get(
+                                    patient_id=entry.mother_id)
+        # Date First Seen...
+        # LMP and/or EDD
+        begin_date = entry.date_of_outcome - datetime.timedelta(360)
+        log_data(entry, "Beginning date of LMP Search: %s" % (begin_date,), 'lmp')
+        lmp_obs = Obs.objects.using(AMRS_DB).filter(
+                            concept_id=1836,
+                            obs_datetime__gte=begin_date,
+                            obs_datetime__lte=entry.date_of_outcome,
+                            person_id=entry.mother_id,
+                            voided=0,
+                         ).order_by('-obs_datetime')
+        if lmp_obs.count() > 0:
+            entry.lmp = lmp_obs[0].value_datetime
+        for lmp in lmp_obs:
+            log_data(entry, "Potential LMP Obs/Date: %s , %s" % (lmp.obs_id, lmp.value_datetime), 'lmp', 1836)
+        # Age at Conception
+        entry.age_at_conception = calculate_age(mother.patient.birthdate,
+                            entry.date_of_outcome - datetime.timedelta(days=270))
+        # Mother ARVS
+        arvset = set_mother_arvs(entry)
+        if len(arvset) == 0:
+            entry.voided = True
+            entry.voided_reason = entry.VOIDED_NO_ARV_HISTORY
+            entry.voided_no_arv_history = True
+    else:
+        entry.check_mother_linked = False
+        entry.voided = True
+        entry.voided_reason = RegistryEntry.VOIDED_MOTHER_NOT_LINKED
+        entry.voided_mother_not_linked = True
+
+    # If we're not voided assign an APR ID
+    if entry.voided == False:
+        entry.apr_id = cur_apr_id
+
+    if save_entries:
+        entry.save(using=APR_DB)
+
+    return entry
+
 
 def get378forms(month=None, year=2014, apr_starting_id=0, save_entries=False):
     """
-    TODO Check to see if they are already in the registry so we don't have
-    duplicate children.
+    
     """
     cur_apr_id = apr_starting_id
     form378encs = Encounter.objects.using(AMRS_DB).filter(
@@ -44,108 +162,11 @@ def get378forms(month=None, year=2014, apr_starting_id=0, save_entries=False):
                     encounter_datetime__month=month)
     logger.info("Number of 378 forms: %s" % (form378encs.count(),))
     for f378 in form378encs:
-        logger.info("Starting 378 encounter: %s" % (f378.encounter_id,))
-        # If we've already done this specific encounter we should skip it and 
-        # move on.
-        if RegistryEntry.objects.filter(child_initial_enc_id=f378.encounter_id).count() > 0:
-            logger.info("This encounter id was already processed, skipping and moving on.")
-            continue
-        entry = RegistryEntry()
-        #  1. Encounter ID
-        entry.child_initial_enc_id = f378.encounter_id
-        #  2. Age in days since encounter
-        entry.age_first_seen = age_in_days_at_encounter(f378)
-        #  3. Child Patient ID
-        entry.child_id = f378.patient_id
-
-        # Has this child been used previously, if so void the encounter.
-        duplicate_entries = RegistryEntry.objects.filter(
-            site=RegistryEntry.SITE_AMPATH, child_id=entry.child_id)
-        if duplicate_entries.count() > 0:
-            entry.voided = True
-            entry.voided_reason = entry.VOIDED_DUPLICATE_CHILD_ENTRY
-            entry.voided_duplicate = True
-
-        child_patient = f378.patient
-        #  4. Mom Patient ID
-        entry.mother_id = get_linked_mother(f378)
-        #  5. Length of Mom's ARV History
-        entry.length_of_moms_arv_history = previous_encounters_in_days(
-            entry.mother_id, f378.encounter_datetime.date())
-
-        entry.site = RegistryEntry.SITE_AMPATH
-        entry.cohort_date = f378.encounter_datetime.date()
-        entry.outcome = entry.OUTCOME_LIVE
-        entry.date_of_outcome = child_patient.patient.birthdate
-        entry.age_first_seen = (entry.cohort_date - entry.date_of_outcome).days
-        entry.gender = child_patient.patient.gender
-
-        init_obs = f378.obs_set
-        # Birth Defect Noted
-        """
-        Field: Birth Defect 
-        If concept 6246 or 6245 is used, we use that checkbox value.
-        If the birth defect checkbox is left blank, then we look to see if any
-        of the following concepts are recorded, and if they are we record those
-        birth defects:
-            8320, 8321, 8322, 8323, 8324, 8325, 8326, 8327, 8328
-        aprfield"""
-        if init_obs.filter(concept_id=6246, value_coded=6242).count() > 0:
-            entry.birth_defect = RegistryEntry.DEFECT_NO
-        elif init_obs.filter(concept_id=6245, value_coded=6242).count() > 0:
-            entry.birth_defect = RegistryEntry.DEFECT_YES
-        else:
-            congab_concepts = [8320, 8321, 8322, 8323, 8324, 8325, 8326, 8327, 8328]
-            congab_obs = init_obs.filter(concept_id__in = congab_concepts, voided=0)
-            if congab_obs.count() > 0:
-                entry.birth_defect = RegistryEntry.DEFECT_YES
-            else:
-                entry.birth_defect = RegistryEntry.DEFECT_UNKNOWN
-        # Birth Weight
-        weight_obs = init_obs.filter(concept_id=5916)
-        if weight_obs.count() > 0:
-            entry.birth_weight = weight_obs[0].value_numeric * 1000
-
-        if save_entries:
-            entry.save(using=APR_DB)
-
-        if entry.mother_id:
-            entry.check_mother_linked = True
-            mother = Patient.objects.using(AMRS_DB).get(
-                                        patient_id=entry.mother_id)
-            # Date First Seen...
-            # LMP and/or EDD
-            begin_date = entry.date_of_outcome - datetime.timedelta(360)
-            lmp_obs = Obs.objects.using(AMRS_DB).filter(
-                                concept_id=1836,
-                                obs_datetime__gte=begin_date,
-                                obs_datetime__lte=entry.date_of_outcome
-                             ).order_by('-obs_datetime')
-            if lmp_obs.count() > 0:
-                entry.lmp = lmp_obs[0].value_datetime
-            # Age at Conception
-            entry.age_at_conception = calculate_age(mother.patient.birthdate,
-                                entry.date_of_outcome - datetime.timedelta(days=270))
-            # Mother ARVS
-            arvset = set_mother_arvs(entry)
-            if len(arvset) == 0:
-                entry.voided = True
-                entry.voided_reason = entry.VOIDED_NO_ARV_HISTORY
-                entry.voided_no_arv_history = True
-        else:
-            entry.check_mother_linked = False
-            entry.voided = True
-            entry.voided_reason = RegistryEntry.VOIDED_MOTHER_NOT_LINKED
-            entry.voided_mother_not_linked = True
-
-        
-        # If we're not voided assign an APR ID
-        if entry.voided == False:
-            entry.apr_id = cur_apr_id
+        entry = run378form(f378, cur_apr_id, save_entries)
+        print "Do we increment...", entry.voided, " : ", entry.apr_id
+        if entry.voided == False and entry.apr_id != None:
+            logger.info("Incrementing current apr_id, just used %s" % (cur_apr_id,))
             cur_apr_id += 1
-
-        if save_entries:
-            entry.save(using=APR_DB)
 
 def set_mother_arvs(entry, save_entries=False):
     """
@@ -157,6 +178,7 @@ def set_mother_arvs(entry, save_entries=False):
     arvs = schema['ampath-mapping']['arvs']
     arvset = []
     begin_date = entry.date_of_outcome - datetime.timedelta(360*2)
+    log_data(entry, "Beginning date for searching ARVs %s" % (begin_date,), 'arvs', 1088)
     encobs = Obs.objects.using(AMRS_DB).filter(voided=0,
         obs_datetime__gte=begin_date,
         obs_datetime__lte=entry.date_of_outcome,
@@ -165,18 +187,20 @@ def set_mother_arvs(entry, save_entries=False):
     cur_arv = None
     for encob in encobs:
         if encob.concept_id == 1088:
-            if encob.value_coded != cur_arv:
-                cur_arv = encob.value_coded
+            if encob.value_coded_id != cur_arv:
+                cur_arv = encob.value_coded_id
                 arvt = ArvTherapy()
                 arvt.registry_entry = entry
                 arvt.course = course
                 arvt.medcode = arvs[str(cur_arv)]['medcode']
                 arvt.date_began = encob.obs_datetime.date()
+                log_data(entry, "Using ARV %s %s" % (encob.concept_id, encob.obs_datetime,), 'arv', 1088)
                 if save_entries:
                     arvt.save(using=APR_DB)
                 arvset.append(arvt)
                 course += 1
             else:
+                log_data(entry, "Skipping cur ARV %s %s" % (encob.concept_id, encob.obs_datetime,), 'arv', 1088)
                 pass
     # Go through and adjust the end dates as well as the ongoing flag 
     for idx, arvt in enumerate(arvset):

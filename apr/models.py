@@ -108,6 +108,16 @@ class RegistryEntry(TimestampedModel):
     def get_max_apr_id(cls):
         return cls.objects.aggregate(models.Max('apr_id'))['apr_id__max']
 
+class EntryLog(TimestampedModel):
+    """
+    Notes from concepts and times used for generating the data points in each
+    entry.
+    """
+    registry_entry = models.ForeignKey(RegistryEntry)
+    message = models.CharField(max_length=255)
+    field_key = models.CharField(max_length=64, blank=True, null=True)
+    concept_id = models.IntegerField(blank=True, null=True)
+
 class ArvTherapy(TimestampedModel):
     registry_entry = models.ForeignKey(RegistryEntry)
     course = models.IntegerField()

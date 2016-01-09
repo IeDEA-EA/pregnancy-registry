@@ -121,8 +121,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'openmrs',
     'apr',
-    'django_tables2',
-    'django_tables2_reports',
+    #'django_tables2',
+    #'django_tables2_reports',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
