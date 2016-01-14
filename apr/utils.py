@@ -8,3 +8,10 @@ def calculate_age(born, eventdate):
         return eventdate.year - born.year - 1
     else:
         return eventdate.year - born.year
+
+
+def log_data(entry, message, field_key=None, concept_id=None):
+    print message
+    entry_log = EntryLog(registry_entry=entry, message=message, 
+        field_key=field_key, concept_id=concept_id)
+    entry_log.save()

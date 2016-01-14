@@ -60,6 +60,17 @@ def build_stage_1():
         set_child_values(entry)
         entry.save(using=APR_DB)
 
+
+def build_stage_2():
+    """
+    Currently contains:
+    set_mother_arvs
+    """
+    faces_entries = RegistryEntry.objects.using(APR_DB).filter(site=RegistryEntry.SITE_FACES)
+    for entry in faces_entries:
+        set_mother_values(entry)
+
+
 def set_non_livebirth_entry(outcome_type, enc):
     """
     Encounter is the blue card from when the mother had a marked
@@ -80,17 +91,6 @@ def set_non_livebirth_entry(outcome_type, enc):
         entry.voided = True
         entry.voided_reason = RegistryEntry.VOIDED_STILLBIRTH_MOTHER_MISSING
     entry.save(using=APR_DB)
-
-
-def build_stage_2():
-    """
-    Currently contains:
-    set_mother_arvs
-    """
-    faces_entries = RegistryEntry.objects.using(APR_DB).filter(site=RegistryEntry.SITE_FACES)
-    for entry in faces_entries:
-        set_mother_values(entry)
-
 
 
 def build_stage_3():

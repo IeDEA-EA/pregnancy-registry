@@ -11,7 +11,7 @@ from apr import serialize
 from faces import get_mom
 
 FACES_OPENMRS_DB = 'faces_openmrs_db'
-APR_DB = 'apr_db'
+APR_DB = 'default'
 
 def full_monthly_cohort_generation(month=1, year=2014, apr_starting_id=None, save=False):
     """
@@ -19,8 +19,96 @@ def full_monthly_cohort_generation(month=1, year=2014, apr_starting_id=None, sav
     command will call in to.
     """
     hei_encs = get_hei_encounters(month=month, year=year)
+    cur_apr_id = apr_starting_id
     for enc in hei_encs:
-        process_hei_encounter(enc, 1)
+        next_entry = process_hei_encounter(enc, cur_apr_id, save=save)
+        if next_entry.voided == False and next_entry.apr_id != None:
+            #logger.info("Incrementing current apr_id, just used %s" % (cur_apr_id,))
+            cur_apr_id += 1
+        
+    cur_apr_id = RegistryEntry.get_max_apr_id() + 1
+    process_nonlive_encounters(month=1, year=2014, apr_starting_id=cur_apr_id, save=save)
+
+
+def process_nonlive_encounters(month, year, apr_starting_id, save=False):
+    """
+    This will focus on getting stillborns and/or abortions.
+
+    Concept
+    6765 Recently Miscarriaged
+    50 Pregnancy Termination
+    6848 Stillbirth
+    """
+    recent_misscarriage = Obs.objects.using(FACES_OPENMRS_DB).filter(voided = 0,
+                                        concept_id = 1836, value_coded = 6765,
+                                        obs_datetime__year=year,
+                                        obs_datetime__month=month,)
+
+    preg_terminated = Obs.objects.using(FACES_OPENMRS_DB).filter(voided = 0,
+                                        concept_id = 1836, value_coded = 50,
+                                        obs_datetime__year=year,
+                                        obs_datetime__month=month,)
+
+    stillbirth = Obs.objects.using(FACES_OPENMRS_DB).filter(voided = 0,
+                                        concept_id = 1836, value_coded = 6848,
+                                        obs_datetime__year=year,
+                                        obs_datetime__month=month,)
+    
+    cur_apr_id = apr_starting_id
+    for ob in recent_misscarriage:
+        next_entry = process_nonlive_encounter(RegistryEntry.OUTCOME_ABORTION_SPONT, ob.encounter, cur_apr_id, save=save)
+        if next_entry.voided == False and next_entry.apr_id != None:
+            cur_apr_id += 1
+
+    for ob in preg_terminated:
+        next_entry = process_nonlive_encounter(RegistryEntry.OUTCOME_ABORTION_SPONT, ob.encounter, cur_apr_id, save=save)
+        if next_entry.voided == False and next_entry.apr_id != None:
+            cur_apr_id += 1
+
+    for ob in stillbirth:
+        next_entry = process_nonlive_encounter(RegistryEntry.OUTCOME_STILLBIRTH, ob.encounter, cur_apr_id, save=save)
+        if next_entry.voided == False and next_entry.apr_id != None:
+            cur_apr_id += 1
+
+
+
+def process_nonlive_encounter(outcome_type, enc, cur_apr_id, save=False):
+    """
+    Encounter is the blue card from when the mother had a marked
+    stillborn/miscarriage etc.
+    """
+    
+
+    entry = RegistryEntry()
+    entry.site = RegistryEntry.SITE_FACES
+    entry.mother_id = enc.patient_id
+    entry.cohort_date = enc.encounter_datetime.date()
+    entry.outcome = outcome_type
+    entry.date_of_outcome = enc.encounter_datetime.date()
+
+    # If an entry with this mother already exists we will consider it a duplicate,
+    # considering that our entire timeline is just under 2 years.
+    duplicate_entries = RegistryEntry.objects.filter(
+        site=RegistryEntry.SITE_FACES, mother_id=entry.mother_id)
+    if duplicate_entries.count() > 0:
+        entry.voided = True
+        entry.voided_reason = entry.VOIDED_DUPLICATE_CHILD_ENTRY
+        if save: entry.save(using=APR_DB)
+        return entry
+
+    if save: entry.save(using=APR_DB)
+    try:
+        add_mother_values_except_arvs(entry)
+        add_mother_arvs(entry, save=save)
+    except Patient.DoesNotExist:
+        entry.voided = True
+        entry.voided_reason = RegistryEntry.VOIDED_STILLBIRTH_MOTHER_MISSING
+    # If we're not voided assign an APR ID
+    if entry.voided == False:
+        entry.apr_id = cur_apr_id
+    if save: entry.save(using=APR_DB)
+    return entry
+
 
 def process_hei_encounter(enc, apr_id, save=False):
     entry = RegistryEntry()
@@ -29,7 +117,11 @@ def process_hei_encounter(enc, apr_id, save=False):
     entry.cohort_date = enc.encounter_datetime.date()
     entry.child_initial_enc_id = enc.encounter_id
 
-    # TODO Check to see if this is a duplicate entry
+    duplicate_entries = RegistryEntry.objects.filter(
+        site=RegistryEntry.SITE_FACES, child_id=entry.child_id)
+    if duplicate_entries.count() > 0:
+        entry.voided = True
+        entry.voided_reason = entry.VOIDED_DUPLICATE_CHILD_ENTRY
 
     # TODO May need to add a check to look at the section titled:
     # FINAL HEI OUTCOMES AT EXIT
@@ -37,8 +129,11 @@ def process_hei_encounter(enc, apr_id, save=False):
     entry.date_of_outcome = enc.patient.patient.birthdate
     entry.gender = enc.patient.patient.gender
 
-    # TODO We need to void this if it is too big...
     entry.age_first_seen = (entry.cohort_date - entry.date_of_outcome).days
+    # Void entry if they were not seen in the first 3 months
+    if entry.age_first_seen > 90:
+        entry.voided = True
+        entry.voided_reason = RegistryEntry.VOIDED_TOO_OLD_AT_PAEDS_ENC
     if save: entry.save(using=APR_DB)
     mom = get_mom(entry.child_id)
     if mom != None:
@@ -53,7 +148,11 @@ def process_hei_encounter(enc, apr_id, save=False):
     if save: entry.save(using=APR_DB)
     add_mother_arvs(entry, save=save)
     add_child_values(entry)
+    # If we're not voided assign an APR ID
+    if entry.voided == False:
+        entry.apr_id = apr_id
     if save: entry.save(using=APR_DB)
+    return entry
 
 
 def add_child_values(entry):
@@ -84,8 +183,6 @@ def add_child_values(entry):
     except Obs.MultipleObjectsReturned:
         # TODO
         pass 
-    print "Birth Defect? ", entry.birth_defect
-
     try:
         encob = child_obs.get(concept_id=5916)
         entry.birth_weight = encob.value_numeric * 1000
@@ -109,6 +206,10 @@ def add_mother_arvs(entry, save=False):
     course = 1
     cur_arv = None
     arvs_obs = preg_encobs.filter(concept_id=1571)
+    if arvs_obs.count() == 0:
+        entry.voided_reason = RegistryEntry.VOIDED_NO_ARV_HISTORY
+        entry.voided = True
+        if save: entry.save()
     for arv in arvs_obs:
         if arv.value_coded != cur_arv:
             cur_arv = arv.value_coded_id

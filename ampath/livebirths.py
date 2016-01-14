@@ -6,7 +6,7 @@ from openmrs.models import Encounter, Relationship, Person, Patient, \
     ConceptDescription, ConceptMapType, ConceptName, ConceptNameTag, \
     ConceptNameTagMap, ConceptNumeric, ConceptSet
 from apr.models import RegistryEntry, ArvTherapy, EntryLog
-from apr.utils import calculate_age
+from apr.utils import calculate_age, log_data
 from apr import serialize
 
 AMRS_DB = 'amrs_db'
@@ -33,12 +33,6 @@ def serialize_entries(year, month, filename):
 def runSingle378Encounter(encounter_id, apr_id, save_entries=False):
     f378 = Encounter.objects.using(AMRS_DB).get(pk=encounter_id)
     return run378form(f378, apr_id, save_entries)
-
-def log_data(entry, message, field_key=None, concept_id=None):
-    print message
-    entry_log = EntryLog(registry_entry=entry, message=message, 
-        field_key=field_key, concept_id=concept_id)
-    entry_log.save()
 
 def run378form(f378, cur_apr_id, save_entries=False):
     logger.info("Starting 378 encounter: %s" % (f378.encounter_id,))

@@ -88,12 +88,14 @@ class RegistryEntry(TimestampedModel):
     VOIDED_STILLBIRTH_MOTHER_MISSING = "VOIDED_STILLBIRTH_MOTHER_MISSING"
     VOIDED_NO_ARV_HISTORY = "VOIDED_NO_ARV_HISTORY"
     VOIDED_DUPLICATE_CHILD_ENTRY = "VOIDED_DUPLICATE_CHILD_ENTRY"
+    VOIDED_DUPLICATE_NONLIVE_ENTRY = "VOIDED_DUPLICATE_NONLIVE_ENTRY"
     CHOICES_VOIDED_REASON = (
         (VOIDED_TOO_OLD_AT_PAEDS_ENC, "Child too old at Paeds Initial Encounter"),
         (VOIDED_MOTHER_NOT_LINKED, "Mother not linked"),
         (VOIDED_STILLBIRTH_MOTHER_MISSING, "Mother Patient record for stillbirth missing"),
         (VOIDED_NO_ARV_HISTORY, "No ARV History for Mother"),
-        (VOIDED_DUPLICATE_CHILD_ENTRY, "Duplicate Child Entry")
+        (VOIDED_DUPLICATE_CHILD_ENTRY, "Duplicate Child Entry"),
+        (VOIDED_DUPLICATE_NONLIVE_ENTRY, "Duplicate Nonlive Entry")
     )
     voided_reason = models.CharField(max_length=255, choices=CHOICES_VOIDED_REASON)
 

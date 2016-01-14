@@ -16,4 +16,4 @@ class FacesTest(TestCase):
 
     def test_full_run_checks(self):
         for i in range(1,13):
-            cohorts.full_monthly_cohort_generation(month=i, year=2014, save=True)
+            cohorts.full_monthly_cohort_generation(month=i, year=2014, save=False)
