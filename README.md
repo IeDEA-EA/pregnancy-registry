@@ -8,9 +8,54 @@ to their respectice concept dictionaries, and then serialize those cohorts to
 the import format expected by INC Research who runs an OC Database to store the
 results.
 
+## Overview
+
 ## Installation
 
 ## Configuration
+
+Two database connections are required to run this utility.  One of them is for
+the local storage of exported pregnancy items.  Initially this database will 
+need to be synced to create the tables.
+
+The second database connection will be to the OpenMRS MySQL instance to pull 
+data from.  This can be a production DB, or preferably a clone of production 
+used for reporting tasks.  This connection can be read only (preferably).
+
+These connections are specified in `pregreg/secure.py`. This contains database
+credentials and should only be readable by the user running the reports. 
+Alternatively, this file is a regular python source, so if you prefer to read 
+credentials from an environment variable, keyring, or that store that can also
+be done.
+
+```python
+DATABASES = {
+    'apr_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'apr_db',
+        'USER': 'apruser',
+        'PASSWORD': '********',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    },
+    'amrs_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'amrs',
+        'USER': 'amrs_user',
+        'PASSWORD': '********',
+        'HOST': 'openmrs.ampath.org',
+        'PORT': '3306',
+    },
+    'faces_openmrs_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'openmrs',
+        'USER': 'faces_user',
+        'PASSWORD': '********',
+        'HOST': 'openmrs.faces.org',
+        'PORT': '3306',
+    },
+}
+```
 
 ## Usage
 
